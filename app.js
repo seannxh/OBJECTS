@@ -1,4 +1,4 @@
-
+const pokemon = require('./data.js')
 const game = {
     party: [],
     difficulty: [],
@@ -18,18 +18,7 @@ const game = {
       { name: "rare candy", quantity: 99 },
     ],
 }
-
-const pokemon = [
-    { number: 1, name: "Bulbasaur", type: "Grass", HP: 45, starter: true, olddNumber: 1},
-    { number: 4, name: "Charmander", type: "Fire", HP: 39, starter: true, newNumber: 4},
-    { number: 7, name: "Squirtle", type: "Water", HP: 44, starter: true, oldNunber: 7},
-    { number: 25, name: "Pikachu", type: "Electric", HP: 35, starter: true, newNumber: 25},
-    { number: 2, name: "Ivysaur", type: "Grass", HP: 90, starter: false, newNumber: 2},
-    { number: 5, name: "Charmeleon", type: "Fire", HP: 78, starter: false, newNumber: 5 },
-    { number: 8, name: "Wartortle", type: "Water", HP: 88, starter: false, newNumber: 8 },
-    { number: 26, name: "Raichu", type: "Electric", HP: 70, starter: false, newNumber: 27 }                       ,
-];
-
+console.log(pokemon)
 
 //Exercise 3
 game.difficulty = 'Medium'
@@ -42,15 +31,15 @@ console.log(`The game difficulty level is ${game.difficulty}`)
 
 
 //Exercise 5
-const pokemon25 = pokemon.find(p => p.HP === 35);
+const pokemon25 = pokemon.find(p => p.name === 'Pikachu');
 if (pokemon25)
     game.party.push(pokemon25)
-const pokemon4 = pokemon.find(p => p.type === 'Water');
+const pokemon4 = pokemon.find(p => p.name === 'Squirtle');
 if(pokemon4)
     game.party.push(pokemon4)
 const pokemonFire = pokemon.find(p => p.name === 'Charmander')
     game.party.push(pokemonFire)
-const pokemon1 = pokemon.find(p => p.type === 'Grass')
+const pokemon1 = pokemon.find(p => p.name === 'Bulbasaur')
     game.party.push(pokemon1)
 console.log(game.party)
 
@@ -62,43 +51,45 @@ game.gyms.forEach(gym => {
 })
 console.log(game.gyms)
 
-// Exercise 7: 
-// const newBulbasaur = game.party.findIndex(pokemon => pokemon.number === 1);
-// const ivysaur = pokemon.find(p => p.number === 2);
-// const newPickachu = game.party.findIndex(pokemon => pokemon.number === 25);
-// const raichu = pokemon.find(p => p.number === 26);
-// const newSquirtle = game.party.findIndex(pokemon => pokemon.number === 7);
-// const wartortle = pokemon.find(p => p.number === 8);
-// const newCharmander = game.party.findIndex(pokemon => pokemon.number === 4);
-// const charmeleon = pokemon.find(p => p.number === 5);
+//Exercise 7: 
+const newBulbasaur = game.party.findIndex(pokemon => pokemon?.number === 1);
+const ivysaur = pokemon.find(p => p.number === 2);
+const newPickachu = game.party.findIndex(pokemon => pokemon?.number === 25);
+const raichu = pokemon.find(p => p.number === 26);
+const newSquirtle = game.party.findIndex(pokemon => pokemon?.number === 7);
+const wartortle = pokemon.find(p => p.number === 8);
+const newCharmander = game.party.findIndex(pokemon => pokemon?.number === 4);
+const charmeleon = pokemon.find(p => p.number === 5);
 
 
-// if (newBulbasaur !== -1 && ivysaur) {
-//     game.party.splice(newBulbasaur, 1, ivysaur);
-// }
-// if (newPickachu !== -1 && raichu) {
-//     game.party.splice(newPickachu, 1, raichu);
-// }
-// if (newSquirtle !== -1 && wartortle) {
-//     game.party.splice(newSquirtle, 1, wartortle);
-// }
-// if (newCharmander !== -1 && charmeleon) {
-//     game.party.splice(newCharmander, 1, charmeleon);
-// }
-const evolutions = [
-    { oldNumber: 1, newNumber: 2 },
-    { oldNumber: 25, newNumber: 26 },
-    { oldNumber: 7, newNumber: 8 },
-    { oldNumber: 4, newNumber: 5 }
-]
-for(let evolution of evolutions) {
-const oldPokemonIndex = game.party.findIndex(pokemon => pokemon.number === evolution.oldNumber);
-const newPokemon = pokemon.find(p => p.number === evolution.newNumber);
-
-if (oldPokemonIndex !== -1 && newPokemon) {
-    game.party.splice(oldPokemonIndex, 1, newPokemon);
+if (newBulbasaur !== -1 && ivysaur) {
+    game.party.splice(newBulbasaur, 1, ivysaur);
 }
+if (newPickachu !== -1 && raichu) {
+    game.party.splice(newPickachu, 1, raichu);
 }
+if (newSquirtle !== -1 && wartortle) {
+    game.party.splice(newSquirtle, 1, wartortle);
+}
+if (newCharmander !== -1 && charmeleon) {
+    game.party.splice(newCharmander, 1, charmeleon);
+}
+// const evolutions = [
+//   {oldNumber: 1, newNumber: 2},
+//   {oldNumber: 4, newNumber: 5},
+//   {oldNumber: 7, newNumber: 8},
+//   {oldNumber: 25, newNumber: 26}
+// ]
+
+// for(let evolution of evolutions){
+// const oldPokemon = game.party.findIndex(p => p.number === evolution.oldNumber)
+// const newPokemon = pokemon.find(p => p.number === evolution.newNumber)
+
+// if(oldPokemon !== -1 && newPokemon){
+//   game.party.splice(oldPokemon, 1, newPokemon)
+// }
+// }
+
 
 console.log(game.party);
 
@@ -130,7 +121,7 @@ game.catchPokemon = function(pokemonObj) {
       this.items[pokeballIndex].quantity--;
     }
   };
-  game.catchPokemon(pokemon[4]); 
+  game.catchPokemon(pokemon[19]); 
   console.log(game.items);
   
 //Exercise 12
@@ -141,7 +132,6 @@ game.gyms.forEach(gym => {
   });
   console.log(game.gyms)
   
-//Exercise 13
 // Exercise 13
 game.gymStatus = function() {
     let gymTally = { completed: 0, incomplete: 0 };
@@ -169,7 +159,7 @@ game.gyms.forEach(gym => {
       gym.completed = true;
     }
   });
-
+  game.gymStatus();
 
   
 
