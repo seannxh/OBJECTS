@@ -1,3 +1,4 @@
+
 const game = {
     party: [],
     difficulty: [],
@@ -17,6 +18,7 @@ const game = {
       { name: "rare candy", quantity: 99 },
     ],
 }
+
 const pokemon = [
     { number: 1, name: "Bulbasaur", type: "Grass", HP: 45, starter: true, olddNumber: 1},
     { number: 4, name: "Charmander", type: "Fire", HP: 39, starter: true, newNumber: 4},
@@ -60,7 +62,7 @@ game.gyms.forEach(gym => {
 })
 console.log(game.gyms)
 
-//Exercise 7: 
+// Exercise 7: 
 // const newBulbasaur = game.party.findIndex(pokemon => pokemon.number === 1);
 // const ivysaur = pokemon.find(p => p.number === 2);
 // const newPickachu = game.party.findIndex(pokemon => pokemon.number === 25);
@@ -82,7 +84,7 @@ console.log(game.gyms)
 // }
 // if (newCharmander !== -1 && charmeleon) {
 //     game.party.splice(newCharmander, 1, charmeleon);
-//}
+// }
 const evolutions = [
     { oldNumber: 1, newNumber: 2 },
     { oldNumber: 25, newNumber: 26 },
@@ -144,7 +146,7 @@ game.gyms.forEach(gym => {
 game.gymStatus = function() {
     let gymTally = { completed: 0, incomplete: 0 };
     this.gyms.forEach(gym => {
-      if (gym.completed) {
+      if (gym.completed === true) {
         gymTally.completed++;
       } else {
         gymTally.incomplete++;
