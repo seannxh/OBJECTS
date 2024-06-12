@@ -51,44 +51,42 @@ console.log(game.gyms)
 
 //Exercise 7: 
 //loop through the party array 
-const newBulbasaur = game.party.findIndex(pokemon => pokemon?.number === 1);
-const ivysaur = pokemon.find(p => p.number === 2);
-const newPickachu = game.party.findIndex(pokemon => pokemon?.number === 25);
-const raichu = pokemon.find(p => p.number === 26);
-const newSquirtle = game.party.findIndex(pokemon => pokemon?.number === 7);
-const wartortle = pokemon.find(p => p.number === 8);
-const newCharmander = game.party.findIndex(pokemon => pokemon?.number === 4);
-const charmeleon = pokemon.find(p => p.number === 5);
+// const newBulbasaur = game.party.findIndex(pokemon => pokemon?.number === 1);
+// const ivysaur = pokemon.find(p => p.number === 2);
+// const newPickachu = game.party.findIndex(pokemon => pokemon?.number === 25);
+// const raichu = pokemon.find(p => p.number === 26);
+// const newSquirtle = game.party.findIndex(pokemon => pokemon?.number === 7);
+// const wartortle = pokemon.find(p => p.number === 8);
+// const newCharmander = game.party.findIndex(pokemon => pokemon?.number === 4);
+// const charmeleon = pokemon.find(p => p.number === 5);
 
 game.party = game.party.map(poke => {
-  if(poke.name === 'bulbasaur'){
-    return pokemon.find[1]
+  if(poke.name === 'Bulbasaur'){
+    return pokemon.find(poke => poke.number === 2)
   }else if(poke.name === 'Pikachu'){
-    return pokemon.find[25]
+    return pokemon.find(poke => poke.number === 26)
   }else if(poke.name === 'Charmander'){
-    return pokemon.find[4]
+    return pokemon.find(poke => poke.number === 5)
     }else if(poke.name === 'Squirtle'){
-      return pokemon.find[7]
-    }else{
-      return
+      return pokemon.find(poke => poke.number === 8)
     }
   }
 )
 console.log(game.party)
 //})
 
-if (newBulbasaur !== -1 && ivysaur) {
-    game.party.splice(newBulbasaur, 1, ivysaur);
-}
-if (newPickachu !== -1 && raichu) {
-    game.party.splice(newPickachu, 1, raichu);
-}
-if (newSquirtle !== -1 && wartortle) {
-    game.party.splice(newSquirtle, 1, wartortle);
-}
-if (newCharmander !== -1 && charmeleon) {
-    game.party.splice(newCharmander, 1, charmeleon);
-}
+// if (newBulbasaur !== -1 && ivysaur) {
+//     game.party.splice(newBulbasaur, 1, ivysaur);
+// }
+// if (newPickachu !== -1 && raichu) {
+//     game.party.splice(newPickachu, 1, raichu);
+// }
+// if (newSquirtle !== -1 && wartortle) {
+//     game.party.splice(newSquirtle, 1, wartortle);
+// }
+// if (newCharmander !== -1 && charmeleon) {
+//     game.party.splice(newCharmander, 1, charmeleon);
+//}
 
 console.log(game.party);
 
