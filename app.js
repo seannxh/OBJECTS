@@ -14,7 +14,7 @@ const game = {
     ],
     items: [
       { name: "potion", quantity: 4 },
-      { name: "pokeball", quantity: 8 },
+      { name: "pokeball", quantity: 9 },
       { name: "rare candy", quantity: 99 },
     ],
 }
@@ -32,10 +32,8 @@ console.log(`The game difficulty level is ${game.difficulty}`)
 
 //Exercise 5
 const pokemon25 = pokemon.find(p => p.name === 'Pikachu');
-if (pokemon25)
     game.party.push(pokemon25)
 const pokemon4 = pokemon.find(p => p.name === 'Squirtle');
-if(pokemon4)
     game.party.push(pokemon4)
 const pokemonFire = pokemon.find(p => p.name === 'Charmander')
     game.party.push(pokemonFire)
@@ -52,6 +50,7 @@ game.gyms.forEach(gym => {
 console.log(game.gyms)
 
 //Exercise 7: 
+//loop through the party array 
 const newBulbasaur = game.party.findIndex(pokemon => pokemon?.number === 1);
 const ivysaur = pokemon.find(p => p.number === 2);
 const newPickachu = game.party.findIndex(pokemon => pokemon?.number === 25);
@@ -61,6 +60,22 @@ const wartortle = pokemon.find(p => p.number === 8);
 const newCharmander = game.party.findIndex(pokemon => pokemon?.number === 4);
 const charmeleon = pokemon.find(p => p.number === 5);
 
+game.party = game.party.map(poke => {
+  if(poke.name === 'bulbasaur'){
+    return pokemon.find[1]
+  }else if(poke.name === 'Pikachu'){
+    return pokemon.find[25]
+  }else if(poke.name === 'Charmander'){
+    return pokemon.find[4]
+    }else if(poke.name === 'Squirtle'){
+      return pokemon.find[7]
+    }else{
+      return
+    }
+  }
+)
+console.log(game.party)
+//})
 
 if (newBulbasaur !== -1 && ivysaur) {
     game.party.splice(newBulbasaur, 1, ivysaur);
@@ -74,22 +89,6 @@ if (newSquirtle !== -1 && wartortle) {
 if (newCharmander !== -1 && charmeleon) {
     game.party.splice(newCharmander, 1, charmeleon);
 }
-// const evolutions = [
-//   {oldNumber: 1, newNumber: 2},
-//   {oldNumber: 4, newNumber: 5},
-//   {oldNumber: 7, newNumber: 8},
-//   {oldNumber: 25, newNumber: 26}
-// ]
-
-// for(let evolution of evolutions){
-// const oldPokemon = game.party.findIndex(p => p.number === evolution.oldNumber)
-// const newPokemon = pokemon.find(p => p.number === evolution.newNumber)
-
-// if(oldPokemon !== -1 && newPokemon){
-//   game.party.splice(oldPokemon, 1, newPokemon)
-// }
-// }
-
 
 console.log(game.party);
 
@@ -112,15 +111,18 @@ game.catchPokemon = function(pokemonObj) {
   };
   
   game.catchPokemon(pokemon[3]);
-  
+  console.log(game.party)
 //Exercise 11
-game.catchPokemon = function(pokemonObj) {
-    this.party.push(pokemonObj);
-    const pokeballIndex = this.items.findIndex(item => item.name === "pokeball");
-    if (pokeballIndex !== -1) {
-      this.items[pokeballIndex].quantity--;
-    }
-  };
+game.catchPokemon = function(pokemonObj){
+//game.catchPokemon = (pokemonObj) => { another way of saying arrow function
+    game.party.push(pokemonObj);
+    //const pokeballIndex = game.items.findIndex(item => item.name === "pokeball");
+    // if (pokeballIndex !== -1) {
+    //   game.items[pokeballIndex].quantity-= 1;
+    // };
+    pokeballs = game.items.find(item => item.name === 'pokeball')
+    if(pokeballs) pokeballs.quantity -= 1;
+}//arrow function does not work with 'this'
   game.catchPokemon(pokemon[19]); 
   console.log(game.items);
   
@@ -165,3 +167,26 @@ game.gyms.forEach(gym => {
 
 //Exercise 16
 console.log(game)
+
+//Exercise 17
+game.party.sort((a, b) => b.hp - a.hp)
+console.log(game.party)
+
+//Exercise 18
+game.collection = []
+game.catchPokemon = function(pokemonObj) {
+  this.party.push(pokemonObj);
+  const pokeballIndex = this.items.findIndex(item => item.name === "pokeball");
+  if (pokeballIndex !== -1) {
+    this.items[pokeballIndex].quantity--;
+  }
+
+if(game.party.length < 6){
+  game.party.push(pokemonObj)
+
+  }else {
+    game.collection.push(pokemonObj)
+  }
+};
+game.catchPokemon(pokemon[19]); 
+console.log(game.items);
